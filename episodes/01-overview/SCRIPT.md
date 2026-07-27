@@ -20,62 +20,46 @@ And yet...
 
 The robots don't seem to know you're there.
 
+---
+
 Now, as clickbaity as that sounds,
 it is nothing more than an observation of
 how difficult it really is
 to engineer robots to behave socially.
 
-Meaningful eyecontact, understanding who is in the room,
-understanding what they say, what they mean, nonverbal
-communication, social positioning,
+Meaningful eyecontact,
+understanding who is in the room,
+understanding what they say,
+what they mean, nonverbal communication,
+social positioning,
+
 and
+
 emotional expression
 are still severely lacking.
 
-Robots stand around,
-stare in the distance
-and absently respond,
-not unlike Star Trek's ship computer.
+Modern chat technology
+brings speech to these robots.
 
-I believe that one of the reasons for this
-is the lack of an adequate technology stack.
-If the robot has a face and some sort of body,
-most projects do nothing more
-than just add a chat interface.
-
-Not so long ago, this was a very laborious process,
-where one giant hand-curated if-statement
-would fool a user for a few minutes.
-
-Nowadays chat technology allows a robot
-to really graduate to the level
-of speaking digital assistant.
-
-There are more ambitious projects
-that add some level of lipsync
-and animation to a robot.
+More ambitious projects add
+a level of lipsync
+and animation.
 
 But,
 at the core,
-these robots are still reactive digital assistants.
-
-A user says something,
-speech recognition recognizes speech,
-an LLM generates a response,
-this response is converted to audio,
-and the robot answers the query.
+these robots are still
+reactive digital assistants.
 
 Hi, I'm Desmond,
-and in this series we're going to explore this problem.
+
+and in this series we're going to
+explore this space.
+
 We're going to design and build a
 new technology stack for social robotics
 that breaks through these limitations
 and allows for more grounded exploration
-of real social interaction.
-
-We're going to take a step back
-and rethink what's going on,
-and then design and implement a system,
+of real social interaction,
 on real edge hardware,
 with real constraints,
 using today's AI coding tools.
@@ -290,36 +274,63 @@ for privacy?
 
 ## Overview
 
-┌─────────────────────┬──────────────────────────┬───────────────────────────────┬─────────────────────────────┐
-│ │ Holy Grail (VLA) │ Frontier Model │ Tech Stack │
-├─────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────────────┤
-│ Latency │ Fails — 40-100B params │ Borderline — ~300ms with │ Meets constraint — reactive │
-│ │ cannot meet 200ms │ latest APIs │ layer at <100ms │
-├─────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────────────┤
-│ Social precision │ Potentially high, if │ Limited by natural language │ High — structured inputs, │
-│ │ trained correctly │ imprecision │ explicit rules │
-├─────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────────────┤
-│ Training data │ Doesn't exist for social │ Not required │ Not required (benefits from │
-│ │ interaction │ │ it) │
-├─────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────────────┤
-│ Privacy │ Edge possible in theory │ Cloud dependency — │ Edge-native, local │
-│ │ │ audio+video leaves device │ processing │
-├─────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────────────┤
-│ Modularity │ None — opaque end-to-end │ Low — prompt engineering only │ High — components updated │
-│ │ │ │ independently │
-├─────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────────────┤
-│ Implementation │ Very high │ Low to medium │ High │
-│ difficulty │ │ │ │
-├─────────────────────┼──────────────────────────┼───────────────────────────────┼─────────────────────────────┤
-│ Maturity │ Research stage │ Production-ready today │ Requires custom engineering │
-└─────────────────────┴──────────────────────────┴───────────────────────────────┴─────────────────────────────┘
+                 │ Holy Grail (VLA)         │ Frontier Model               │ Tech Stack
+-----------------|--------------------------|------------------------------|----------------------------
+Latency          │ Fails: 40-100B params    │ Borderline: ~300ms with      │ Meets constraint: reactive
+                 │ cannot meet 200ms        │ latest APIs                  │ layer at <100ms
+-----------------|--------------------------|------------------------------|----------------------------
+Social precision │ Potentially high, if     │ Limited by natural language  │ High — structured inputs,
+                 | trained correctly        │ imprecision                  │ explicit rules
+-----------------|--------------------------|------------------------------|----------------------------
+Training data    │ Doesn't exist for social │ Not required                 │ Not required (benefits from
+                 │ interaction              │                              │ it)
+-----------------|--------------------------|------------------------------|----------------------------
+Privacy          │ Edge possible in theory  │ Cloud dependency:            │ Edge-native, local
+                 │                          │ audio+video leaves device    │ processing
+-----------------|--------------------------|------------------------------|----------------------------
+Modularity       │ None: opaque end-to-end  │ Low: prompt engineering only │ High: components updated
+                 │                          │                              │ independently
+-----------------|--------------------------|------------------------------|----------------------------
+Implementation   │ Very high                │ Low to medium                │ High
+difficulty       │                          │                              │
+-----------------|--------------------------|------------------------------|----------------------------
+Maturity         │ Research stage           │ Production-ready today       │ Requires custom engineering
 
-Why the tech stack is the right next step:
 
-The other two approaches hit hard walls that better hardware and bigger models won't easily fix. The VLA approach needs training data that doesn't exist and cannot meet the latency constraint on any current hardware. The frontier model approach is bottlenecked by the expressiveness of natural language, a fundamental limit, not an engineering one.
+The VLA approach needs training data
+that doesn't exist
+and cannot meet the latency constraint
+on any current hardware
 
-The tech stack is the only approach where all three failure modes are addressable: latency is met by keeping the core model small, social precision is met by structured inputs rather than prose instructions, and privacy is met by running locally on edge hardware.
+The frontier model approach
+is bottlenecked by the
+expressiveness of natural language,
+a fundamental limit, not an engineering one.
 
-It also has a compounding advantage: the perception layer it builds is exactly what the other two approaches need. It generates labeled social interaction data for future VLA training, and it handles the fine-grained encoding that prompt engineering cannot. Building the stack doesn't foreclose the other directions, it funds them.
+The tech stack is the only approach
+where all three failure modes
+are addressable:
+
+latency is met by
+keeping the core model small,
+social precision is met
+by structured inputs
+rather than prose instructions,
+
+and privacy is met by running
+locally on edge hardware.
+
+It also has a compounding advantage:
+
+the perception layer it builds
+is exactly what the other two approaches need.
+It generates labeled social interaction
+data for future VLA training,
+and it handles the fine-grained encoding
+that prompt engineering cannot.
+
+Building the stack doesn't foreclose
+the other directions, it funds them.
 
 ## Engineering Perspective
+
