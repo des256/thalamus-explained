@@ -74,32 +74,35 @@ not a request-response loop.
 Social interaction is
 not a text chat.
 
-Social interaction is
-a continuous, multimodal exchange
+Social interaction is a continuous exchange
+across multiple channels at once:
 
-verbal content, tone, prosody,
-gaze direction, facial expression,
-body posture, gesture, and proxemics
+what you say, how you say it —
+your tone, your rhythm, your emphasis —
 
-all happening simultaneously,
-all informing each other.
+where you're looking,
+what your face is doing,
+how you're holding your body,
+your gestures,
+and how close you're standing to someone.
 
-It requires modeling
+All of it happening simultaneously.
+All of it informing the rest.
+
+It requires tracking
 not just what someone says,
-but what they mean, what they know,
+but what they mean, what they already know,
 and what they're likely to do next.
 
-And
+And it requires doing all of this in real time.
 
-it requires doing all of this in real time.
-
-when one person is talking,
+When one person is talking,
 the other is nodding and "mm-hmm"ing,
 glancing away at important moments,
 smiling at others,
 repositioning,
 
-And all of this, is happening
+And all of this is happening
 within a 200ms response time.
 
 A one-second delay in conversation
@@ -110,7 +113,7 @@ is a social violation.
 
 This means latency is
 not an optimization target,
-but it's a first-class design constraint.
+but a first-class design constraint.
 
 And it should shape every
 architectural decision you make.
@@ -130,7 +133,8 @@ between 40 to 100 billion parameters,
 to take in everything:
 
 audio, video, sensor data,
-proprioception, and a prompt,
+the robot's own joint positions and body state,
+and a prompt,
 
 and output both speech
 and servo control signals directly.
@@ -149,8 +153,10 @@ of social behavior from data.
 
 Sadly, this training data doesn't exist.
 
-VLA research has made real progress,
-but almost entirely for manipulation tasks.
+Vision-Language-Action (VLA) research
+has made real progress,
+but almost entirely for manipulation tasks —
+pick-and-place, tool use, navigation.
 
 Social interaction data at this scale,
 with the right labels,
@@ -208,7 +214,8 @@ Don't ask one model to do everything.
 
 Pre-process the raw signals first,
 
-face recognition, speaker diarization,
+face recognition,
+speaker diarization — who said what, when,
 gaze estimation, emotion detection,
 spatial positioning
 
