@@ -282,27 +282,27 @@ for privacy?
 ## Overview
 
                  │ Holy Grail (VLA)         │ Frontier Model               │ Tech Stack
------------------|--------------------------|------------------------------|----------------------------
-Latency          │ Fails: 40-100B params    │ Borderline: ~300ms with      │ Meets constraint: reactive
-                 │ cannot meet 200ms        │ latest APIs                  │ layer at <100ms
------------------|--------------------------|------------------------------|----------------------------
-Social precision │ Potentially high, if     │ Limited by natural language  │ High — structured inputs,
-                 | trained correctly        │ imprecision                  │ explicit rules
------------------|--------------------------|------------------------------|----------------------------
-Training data    │ Doesn't exist for social │ Not required                 │ Not required (benefits from
-                 │ interaction              │                              │ it)
------------------|--------------------------|------------------------------|----------------------------
-Privacy          │ Edge possible in theory  │ Cloud dependency:            │ Edge-native, local
-                 │                          │ audio+video leaves device    │ processing
------------------|--------------------------|------------------------------|----------------------------
-Modularity       │ None: opaque end-to-end  │ Low: prompt engineering only │ High: components updated
-                 │                          │                              │ independently
------------------|--------------------------|------------------------------|----------------------------
-Implementation   │ Very high                │ Low to medium                │ High
-difficulty       │                          │                              │
------------------|--------------------------|------------------------------|----------------------------
-Maturity         │ Research stage           │ Production-ready today       │ Requires custom engineering
 
+-----------------|--------------------------|------------------------------|----------------------------
+Latency │ Fails: 40-100B params │ Borderline: ~300ms with │ Meets constraint: reactive
+│ cannot meet 200ms │ latest APIs │ layer at <100ms
+-----------------|--------------------------|------------------------------|----------------------------
+Social precision │ Potentially high, if │ Limited by natural language │ High — structured inputs,
+| trained correctly │ imprecision │ explicit rules
+-----------------|--------------------------|------------------------------|----------------------------
+Training data │ Doesn't exist for social │ Not required │ Not required (benefits from
+│ interaction │ │ it)
+-----------------|--------------------------|------------------------------|----------------------------
+Privacy │ Edge possible in theory │ Cloud dependency: │ Edge-native, local
+│ │ audio+video leaves device │ processing
+-----------------|--------------------------|------------------------------|----------------------------
+Modularity │ None: opaque end-to-end │ Low: prompt engineering only │ High: components updated
+│ │ │ independently
+-----------------|--------------------------|------------------------------|----------------------------
+Implementation │ Very high │ Low to medium │ High
+difficulty │ │ │
+-----------------|--------------------------|------------------------------|----------------------------
+Maturity │ Research stage │ Production-ready today │ Requires custom engineering
 
 The VLA approach needs training data
 that doesn't exist
@@ -341,3 +341,6 @@ the other directions, it funds them.
 
 ## Engineering Perspective
 
+Why Rust?
+
+When using AI coding tools, the need for a human-readable language disappears, so it becomes a lot smarter and more efficient to use a more system-near language like C or Rust. Also, the strictness of the Rust compiler allows for quick and sturdy development. Then, Rust is designed for very efficient, safe, parallel programming, which is really important on small edge devices. I like to design the data structures and general architecture myself, and let Claude handle the boilerplate.
