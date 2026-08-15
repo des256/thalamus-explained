@@ -144,6 +144,20 @@ Can local users teach, compose, and redefine the robot?
 - New capabilities lack testing, approval, versioning, and rollback
 - The robot's role cannot be redefined
 
+## So We Need
+
+[TODO]
+
+## And the Ultimate Solution is
+
+Train one model (or fast + slow like Helix) that can do all of that. Probably between 40b..100b parameters.
+
+But: there is no real training data (because the world is focused on labor/manipulation/navigation first)
+
+## So, We Need To Develop a Machine Still
+
+And that will help us understand social interaction and also train that ultimate model.
+
 ## Data-Driven Development on the Edge
 
 Needs high performance, like videogames in the late 1900s.
@@ -156,7 +170,7 @@ Development: Holistic data-driven, as opposed to feature-driven.
 
 1. Start designing/structuring around data paths.
 
-2. Reduce bandwidth as early as possible.
+2. Reduce bandwidth as much as possible.
 
 3. Design parallel streaming pipelines.
 
@@ -174,9 +188,18 @@ So I'm developing this in Rust, designed to run on any social robot. Roughly foc
 
 It should be open source, because:
 
-- We want people to know that Mind Children is where it's at.
 - Other robot enthousiasts might have great tips that we can quickly use in Codey.
+- We want people to know that Mind Children is where it's at.
 - Flexibility towards research in SingularityNET and Hanson Robotics.
+
+## Overview
+
+- Audio Input Pipeline
+- Video Input Pipeline
+- Audio Output Pipeline
+- Action Output Pipeline
+- Social World Model
+- The Agent
 
 ## Audio Input Pipeline
 
@@ -214,6 +237,12 @@ It should be open source, because:
 ### Depth-capable Camera
 
 - Depth-based Position
+
+### Other Things that Could Go Here
+
+- Hand Landmarks Detection (gestures, is pointing at)
+- Pose Detection for fuller body understanding
+- Object Detection to reason about the semantic world around the robot
 
 ## Audio Output Pipeline
 
