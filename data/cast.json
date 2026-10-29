@@ -1,0 +1,17 @@
+{
+  "$comment": "Fixed cast across all scenes. slot = preferred identity hue when the person is a principal in a scene; at most one principal per slot per scene, everyone else renders neutral. role staff = personnel in all four domains: museum guide, hotel staff, care staff, host on stage.",
+  "robot": { "id": "robot", "name": null },
+  "people": [
+    { "id": "nile",     "name": "Nile",     "age": "adult", "role": "visitor", "slot": "blue" },
+    { "id": "chris",    "name": "Chris",    "age": "adult", "role": "visitor", "slot": "orange" },
+    { "id": "wendy",    "name": "Wendy",    "age": "adult", "role": "staff",   "slot": "aqua" },
+    { "id": "yue",      "name": "Yue",      "age": "adult", "role": "visitor", "slot": "blue" },
+    { "id": "janet",    "name": "Janet",    "age": "adult", "role": "staff",   "slot": "orange" },
+    { "id": "ben",      "name": "Ben",      "age": "elder", "role": "visitor", "slot": "aqua",   "notes": "Yoda-like" },
+    { "id": "pamela",   "name": "Pamela",   "age": "elder", "role": "visitor", "slot": "blue" },
+    { "id": "matt",     "name": "Matt",     "age": "elder", "role": "visitor", "slot": "orange" },
+    { "id": "ray",      "name": "Ray",      "age": "child", "role": "visitor", "slot": "aqua" },
+    { "id": "clarence", "name": "Clarence", "age": "child", "role": "visitor", "slot": "blue" },
+    { "id": "zoe",      "name": "Zoe",      "age": "child", "role": "visitor", "slot": "orange" }
+  ]
+}

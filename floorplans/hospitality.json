@@ -1,0 +1,163 @@
+{
+  "id": "hospitality",
+  "name": "Hotel lobby",
+  "meters": {
+    "width": 16,
+    "height": 9
+  },
+  "features": [
+    {
+      "kind": "zone",
+      "x": 0.2,
+      "y": 0.2,
+      "width": 15.6,
+      "height": 8.6,
+      "label": "Lobby"
+    },
+    {
+      "kind": "wall",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          9
+        ],
+        [
+          9.5,
+          9
+        ]
+      ]
+    },
+    {
+      "kind": "wall",
+      "points": [
+        [
+          6.5,
+          9
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          3.2
+        ]
+      ]
+    },
+    {
+      "kind": "wall",
+      "points": [
+        [
+          0,
+          1.2
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "kind": "exhibit",
+      "x": 5,
+      "y": 0.15,
+      "width": 6,
+      "height": 1.0,
+      "label": "Front desk"
+    },
+    {
+      "kind": "exhibit",
+      "x": 15.35,
+      "y": 1.5,
+      "width": 0.5,
+      "height": 2.4,
+      "label": ""
+    },
+    {
+      "kind": "zone",
+      "x": 13.2,
+      "y": 1.2,
+      "width": 2.6,
+      "height": 3.0,
+      "label": "Lifts"
+    },
+    {
+      "kind": "zone",
+      "x": 0.4,
+      "y": 1.0,
+      "width": 2.4,
+      "height": 2.4,
+      "label": "Rooms"
+    },
+    {
+      "kind": "zone",
+      "x": 10.5,
+      "y": 5.5,
+      "width": 5.0,
+      "height": 3.2,
+      "label": "Café"
+    },
+    {
+      "kind": "furniture",
+      "x": 11.2,
+      "y": 6.4,
+      "width": 1.2,
+      "height": 0.8,
+      "label": ""
+    },
+    {
+      "kind": "furniture",
+      "x": 13.4,
+      "y": 6.4,
+      "width": 1.2,
+      "height": 0.8,
+      "label": ""
+    },
+    {
+      "kind": "furniture",
+      "x": 1.5,
+      "y": 5.0,
+      "width": 2.4,
+      "height": 0.8,
+      "label": "sofa"
+    },
+    {
+      "kind": "furniture",
+      "x": 1.5,
+      "y": 7.2,
+      "width": 2.4,
+      "height": 0.8,
+      "label": "sofa"
+    },
+    {
+      "kind": "furniture",
+      "x": 4.6,
+      "y": 5.8,
+      "width": 1.0,
+      "height": 1.0,
+      "label": ""
+    },
+    {
+      "kind": "zone",
+      "x": 6.3,
+      "y": 7.6,
+      "width": 3.4,
+      "height": 1.2,
+      "label": "Entrance"
+    },
+    {
+      "kind": "dock",
+      "x": 8,
+      "y": 6.9,
+      "heading": -90
+    }
+  ]
+}

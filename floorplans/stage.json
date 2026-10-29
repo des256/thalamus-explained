@@ -1,0 +1,147 @@
+{
+  "id": "stage",
+  "name": "Auditorium",
+  "meters": {
+    "width": 16,
+    "height": 10
+  },
+  "features": [
+    {
+      "kind": "wall",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          10
+        ],
+        [
+          12,
+          10
+        ]
+      ]
+    },
+    {
+      "kind": "wall",
+      "points": [
+        [
+          10,
+          10
+        ],
+        [
+          6,
+          10
+        ]
+      ]
+    },
+    {
+      "kind": "wall",
+      "points": [
+        [
+          4,
+          10
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "kind": "exhibit",
+      "x": 4,
+      "y": 0.15,
+      "width": 8,
+      "height": 0.5,
+      "label": "Screen"
+    },
+    {
+      "kind": "zone",
+      "x": 2.5,
+      "y": 0.9,
+      "width": 11,
+      "height": 2.2,
+      "label": "Stage"
+    },
+    {
+      "kind": "furniture",
+      "x": 3.2,
+      "y": 1.8,
+      "width": 1.0,
+      "height": 0.6,
+      "label": "lectern"
+    },
+    {
+      "kind": "zone",
+      "x": 0.3,
+      "y": 1.0,
+      "width": 1.8,
+      "height": 2.0,
+      "label": "Host"
+    },
+    {
+      "kind": "zone",
+      "x": 1.2,
+      "y": 3.6,
+      "width": 13.6,
+      "height": 5.4,
+      "label": "Audience"
+    },
+    {
+      "kind": "furniture",
+      "x": 1.5,
+      "y": 4.2,
+      "width": 13,
+      "height": 0.6,
+      "label": ""
+    },
+    {
+      "kind": "furniture",
+      "x": 1.5,
+      "y": 5.4,
+      "width": 13,
+      "height": 0.6,
+      "label": ""
+    },
+    {
+      "kind": "furniture",
+      "x": 1.5,
+      "y": 6.6,
+      "width": 13,
+      "height": 0.6,
+      "label": ""
+    },
+    {
+      "kind": "furniture",
+      "x": 1.5,
+      "y": 7.8,
+      "width": 13,
+      "height": 0.6,
+      "label": ""
+    },
+    {
+      "kind": "furniture",
+      "x": 7.6,
+      "y": 1.9,
+      "width": 0.6,
+      "height": 0.6,
+      "label": "mic"
+    },
+    {
+      "kind": "dock",
+      "x": 5.0,
+      "y": 2.1,
+      "heading": 90
+    }
+  ]
+}

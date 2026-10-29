@@ -1,0 +1,166 @@
+{
+  "id": "care",
+  "name": "Care home day room",
+  "meters": {
+    "width": 14,
+    "height": 9
+  },
+  "features": [
+    {
+      "kind": "zone",
+      "x": 0.2,
+      "y": 0.2,
+      "width": 13.6,
+      "height": 8.6,
+      "label": "Day room"
+    },
+    {
+      "kind": "wall",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          5.6
+        ]
+      ]
+    },
+    {
+      "kind": "wall",
+      "points": [
+        [
+          0,
+          3.6
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "kind": "exhibit",
+      "x": 0.15,
+      "y": 0.6,
+      "width": 3.2,
+      "height": 1.4,
+      "label": "Nurses' station"
+    },
+    {
+      "kind": "zone",
+      "x": 4.5,
+      "y": 0.15,
+      "width": 9.3,
+      "height": 0.9,
+      "label": "Garden window"
+    },
+    {
+      "kind": "exhibit",
+      "x": 13.35,
+      "y": 3.0,
+      "width": 0.5,
+      "height": 2.0,
+      "label": ""
+    },
+    {
+      "kind": "zone",
+      "x": 10.2,
+      "y": 2.0,
+      "width": 3.6,
+      "height": 4.0,
+      "label": "TV corner"
+    },
+    {
+      "kind": "furniture",
+      "x": 10.8,
+      "y": 3.2,
+      "width": 0.9,
+      "height": 0.9,
+      "label": ""
+    },
+    {
+      "kind": "furniture",
+      "x": 10.8,
+      "y": 4.6,
+      "width": 0.9,
+      "height": 0.9,
+      "label": ""
+    },
+    {
+      "kind": "furniture",
+      "x": 12.1,
+      "y": 4.6,
+      "width": 0.9,
+      "height": 0.9,
+      "label": ""
+    },
+    {
+      "kind": "furniture",
+      "x": 4.0,
+      "y": 3.2,
+      "width": 4.0,
+      "height": 1.6,
+      "label": "dining table"
+    },
+    {
+      "kind": "furniture",
+      "x": 1.2,
+      "y": 6.6,
+      "width": 0.9,
+      "height": 0.9,
+      "label": ""
+    },
+    {
+      "kind": "furniture",
+      "x": 2.6,
+      "y": 6.6,
+      "width": 0.9,
+      "height": 0.9,
+      "label": ""
+    },
+    {
+      "kind": "furniture",
+      "x": 4.0,
+      "y": 6.6,
+      "width": 0.9,
+      "height": 0.9,
+      "label": ""
+    },
+    {
+      "kind": "furniture",
+      "x": 7.2,
+      "y": 7.6,
+      "width": 1.2,
+      "height": 0.6,
+      "label": "med cart"
+    },
+    {
+      "kind": "zone",
+      "x": 0.2,
+      "y": 3.8,
+      "width": 1.6,
+      "height": 1.6,
+      "label": "Rooms"
+    },
+    {
+      "kind": "dock",
+      "x": 2.4,
+      "y": 4.6,
+      "heading": 0
+    }
+  ]
+}
