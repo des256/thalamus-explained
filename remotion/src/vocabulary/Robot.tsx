@@ -14,7 +14,9 @@ export const Robot: React.FC<{
   state?: RobotState;
   gaze?: number;
   name?: string;
-}> = ({ x, y, heading = 0, state = "idle", gaze, name }) => {
+  scale?: number;
+  opacity?: number;
+}> = ({ x, y, heading = 0, state = "idle", gaze, name, scale: zoom = 1, opacity = 1 }) => {
   const { palette } = useTheme();
   const { toPx, scale } = useStage();
   const [cx, cy] = toPx(x, y);
@@ -35,7 +37,7 @@ export const Robot: React.FC<{
   };
 
   return (
-    <g>
+    <g opacity={opacity} transform={zoom === 1 ? undefined : `translate(${cx}, ${cy}) scale(${zoom}) translate(${-cx}, ${-cy})`}>
       {gaze !== undefined && (
         <path
           d={`M${cx},${cy} L${cx + Math.cos(h - deg(25)) * gaze * scale},${cy + Math.sin(h - deg(25)) * gaze * scale} A${gaze * scale},${gaze * scale} 0 0 1 ${cx + Math.cos(h + deg(25)) * gaze * scale},${cy + Math.sin(h + deg(25)) * gaze * scale} Z`}

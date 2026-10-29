@@ -13,7 +13,9 @@ remotion/        Remotion project: theme, vocabulary components, compositions
                      Bubble, Clock, BudgetBar, Ticker, Narration, Pulse, Card, Dot,
                      Title, LowerThird
   src/compositions/  Scene (renders any trace), Strip (the cold-open ending),
-                     Vocabulary (sticker sheet); Card, Board, AxisTable, Ladder follow
+                     Buildup and BuildupPan (chapter 3 floor map build-up, grid
+                     and camera versions), Vocabulary (sticker sheet); Card,
+                     Board, AxisTable, Ladder follow
   src/trace/         trace and floorplan schemas (zod), keyframe interpolation,
                      seeded generator for throwaway scenes
 data/            scene data, the shared contract with the future simulator
@@ -38,6 +40,8 @@ npm run dev                                   # Remotion studio
 npx remotion still vocab-mock-dark out/x.png  # one still
 npx remotion render museum-coldopen out/museum-coldopen.mp4   # a scene
 npx remotion render cold-open out/cold-open.mp4               # cold open with ending
+npx remotion render buildup-museum out/buildup-museum.mp4     # one map build-up; -all for all four
+npx remotion render buildup-pan-all out/buildup-pan-all.mp4   # camera version, pans and pull-back
 npm run lint                                  # eslint + tsc
 ```
 

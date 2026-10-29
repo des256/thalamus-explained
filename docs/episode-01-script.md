@@ -102,6 +102,8 @@ Wire a model to a camera and a microphone, put the robot in a room, see what hap
 When it goes wrong, you fix the prompt. When it keeps going wrong, you tell the model to do it right.
 We have that prompt in the lab. It is the "make no mistakes" of vibe robotics.
 
+--> maybe cut here to other perspective
+
 It's not foolish. It's the fastest way to get anything working, and everyone starts there.
 But you learn the wrong thing from it.
 A good demo may be luck. A bad one doesn't tell you which of twenty things failed.
@@ -117,23 +119,40 @@ Not "what should the robot do", but "what goes wrong when it does a job".
 Features are endless. Failures are finite, and the same ones show up everywhere:
 the wrong name, the lost straggler, the missed question, the overrun.
 
+--> blank screen
+
 That's why we need jobs. Four of them.
+
+--> build up museum
+
 A museum tour: strangers, an hour, a noisy hall, a schedule.
+
+--> build up hotel
+
 A hotel: guests who return for years, a front desk, money and room keys at stake.
+
+--> build up care home
+
 A care home: the same people for months, faces and voices that drift, a nurse with the final say.
+
+--> build up stage talk
+
 A stage talk with questions: a hundred people it will never know, a microphone, a clock.
 
 Why these four? Because of what varies between them, for the robot.
+
+--> start axistable
+
 How long must it remember someone? How many people, and does it know them?
 Who can overrule it? Does it move? What does a mistake cost?
 Is repeating itself annoying, or reassuring? Where does its knowledge come from?
 Rows and columns, and you get this table.
 Every row has its extremes covered. A platform that handles all four has no obvious hole.
 
+--> back to camera
+
 I picked these jobs. Nobody surveyed the market.
 But they are concrete enough to argue with. Let's start with the museum.
-
-**On screen.** The four floorplans drawn in at the start: walls draw themselves, exhibits and furniture pop in, the robot drops onto each plan. They stay as the backdrop, dimmed during the "just try things" part, each one highlighted as its domain is named. Optional cut-in for the "do it right" line: the robot alone on the museum map with a bubble that says "Make no mistakes." The AxisTable appears one row per question as the questions are asked, the four columns filling in, then the whole table for the coverage line. Camera for the rest.
 
 **Stage column for the axis table.** The other three columns are in INIT.md.
 

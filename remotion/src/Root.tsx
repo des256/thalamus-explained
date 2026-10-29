@@ -4,6 +4,8 @@ import { MODES, canvas } from "./theme";
 import { PAGES, Vocabulary } from "./compositions/Vocabulary";
 import { Scene, sceneDuration } from "./compositions/Scene";
 import { Strip, stripDuration } from "./compositions/Strip";
+import { Buildup, PER_PLAN_SECONDS } from "./compositions/Buildup";
+import { BuildupPan, buildupPanAllSeconds, buildupPanSeconds } from "./compositions/BuildupPan";
 import { loadFloorplan, loadTrace, type Trace } from "./trace/schema";
 import museumRaw from "../../floorplans/museum.json";
 import hospitalityRaw from "../../floorplans/hospitality.json";
@@ -50,6 +52,13 @@ const previewTrace = (plan: (typeof floorplans)[keyof typeof floorplans]): Trace
 const traces = [loadTrace(coldOpenRaw)];
 const coldOpen = { trace: traces[0], floorplan: floorplans.museum };
 
+// Chapter 3 build-up: the order the speech names the jobs.
+const buildup = {
+  plans: [floorplans.museum, floorplans.hospitality, floorplans.care, floorplans.stage],
+  captions: ["Museum tour", "Hotel", "Care home", "Stage talk"],
+  domains: ["museum", "hospitality", "care", "stage"] as const,
+};
+
 export const RemotionRoot: React.FC = () => (
   <>
     <Composition
@@ -73,6 +82,52 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={{ trace, floorplan: floorplans[trace.floorplan as keyof typeof floorplans] }}
       />
     ))}
+    {buildup.plans.map((plan, i) => (
+      <Composition
+        key={`buildup-${plan.id}`}
+        id={`buildup-${plan.id}`}
+        component={Buildup}
+        durationInFrames={PER_PLAN_SECONDS * canvas.fps}
+        fps={canvas.fps}
+        width={canvas.width}
+        height={canvas.height}
+        defaultProps={{ ...buildup, domains: [...buildup.domains], active: i }}
+      />
+    ))}
+    {buildup.plans.map((plan, i) => {
+      const panIn = i > 0;
+      const zoomOut = i === buildup.plans.length - 1;
+      return (
+        <Composition
+          key={`buildup-pan-${plan.id}`}
+          id={`buildup-pan-${plan.id}`}
+          component={BuildupPan}
+          durationInFrames={Math.ceil(buildupPanSeconds(panIn, zoomOut) * canvas.fps)}
+          fps={canvas.fps}
+          width={canvas.width}
+          height={canvas.height}
+          defaultProps={{ ...buildup, domains: [...buildup.domains], active: i, panIn, zoomOut }}
+        />
+      );
+    })}
+    <Composition
+      id="buildup-pan-all"
+      component={BuildupPan}
+      durationInFrames={Math.ceil(buildupPanAllSeconds(buildup.plans.length) * canvas.fps)}
+      fps={canvas.fps}
+      width={canvas.width}
+      height={canvas.height}
+      defaultProps={{ ...buildup, domains: [...buildup.domains], active: -1 }}
+    />
+    <Composition
+      id="buildup-all"
+      component={Buildup}
+      durationInFrames={PER_PLAN_SECONDS * buildup.plans.length * canvas.fps}
+      fps={canvas.fps}
+      width={canvas.width}
+      height={canvas.height}
+      defaultProps={{ ...buildup, domains: [...buildup.domains], active: -1 }}
+    />
     {Object.values(floorplans).map((plan) => (
       <Still
         key={`plan-${plan.id}`}

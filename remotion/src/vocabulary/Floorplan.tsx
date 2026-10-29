@@ -4,21 +4,44 @@ import { useStage } from "./Stage";
 import { Text } from "./Label";
 
 // Floorplans are data in meters, not artwork. Walls are polylines, everything
-// else is a labelled rectangle. The same file can later drive the simulator.
+// else is a labelled rectangle, plus a dock for the robot's home position.
+// The same file can later drive the simulator.
 export type Feature =
   | { kind: "wall"; points: [number, number][] }
   | { kind: "exhibit" | "furniture" | "zone"; x: number; y: number; width: number; height: number; label?: string }
   | { kind: "dock"; x: number; y: number; heading: number };
 
-export const Floorplan: React.FC<{ features: Feature[]; highlight?: string }> = ({ features, highlight }) => {
+// `progress` is an optional per-feature 0..1 for build-up animations: walls
+// draw along their length, rectangles pop, zones fade, the dock ring draws.
+export const Floorplan: React.FC<{ features: Feature[]; highlight?: string; progress?: number[] }> = ({ features, highlight, progress }) => {
   const { palette } = useTheme();
   const { toPx, scale } = useStage();
+  const pop = (p: number) => {
+    // ease out with a little overshoot
+    const u = 1 - Math.pow(1 - p, 3);
+    return 0.7 + 0.3 * u + 0.12 * Math.sin(p * Math.PI);
+  };
   return (
     <g>
       {features.map((f, i) => {
+        const p = progress ? Math.max(0, Math.min(1, progress[i] ?? 1)) : 1;
+        if (p <= 0) return null;
         if (f.kind === "wall") {
           const d = f.points.map(([x, y], j) => `${j === 0 ? "M" : "L"}${toPx(x, y).join(",")}`).join(" ");
-          return <path key={i} d={d} fill="none" stroke={palette.muted} strokeWidth={geometry.strokeThick} strokeLinejoin="round" />;
+          return (
+            <path
+              key={i}
+              d={d}
+              fill="none"
+              stroke={palette.muted}
+              strokeWidth={geometry.strokeThick}
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              pathLength={1}
+              strokeDasharray={p < 1 ? 1 : undefined}
+              strokeDashoffset={p < 1 ? 1 - p : undefined}
+            />
+          );
         }
         if (f.kind === "dock") {
           const [cx, cy] = toPx(f.x, f.y);
@@ -26,7 +49,17 @@ export const Floorplan: React.FC<{ features: Feature[]; highlight?: string }> = 
           const h = (f.heading * Math.PI) / 180;
           return (
             <g key={i}>
-              <circle cx={cx} cy={cy} r={r + 4} fill="none" stroke={palette.muted} strokeWidth={geometry.strokeThin} strokeDasharray="5 5" />
+              <circle
+                cx={cx}
+                cy={cy}
+                r={r + 4}
+                fill="none"
+                stroke={palette.muted}
+                strokeWidth={geometry.strokeThin}
+                strokeDasharray={p < 1 ? `${p} 1` : "5 5"}
+                pathLength={p < 1 ? 1 : undefined}
+                transform={`rotate(-90 ${cx} ${cy})`}
+              />
               <line
                 x1={cx + Math.cos(h) * (r + 4)}
                 y1={cy + Math.sin(h) * (r + 4)}
@@ -35,6 +68,7 @@ export const Floorplan: React.FC<{ features: Feature[]; highlight?: string }> = 
                 stroke={palette.muted}
                 strokeWidth={geometry.strokeThin}
                 strokeLinecap="round"
+                opacity={p >= 1 ? 1 : 0}
               />
             </g>
           );
@@ -45,14 +79,17 @@ export const Floorplan: React.FC<{ features: Feature[]; highlight?: string }> = 
         const hot = f.kind === "exhibit" && highlight !== undefined && f.label === highlight;
         if (f.kind === "zone") {
           return (
-            <g key={i}>
+            <g key={i} opacity={p}>
               <rect x={x} y={y} width={w} height={h} fill="none" stroke={palette.hairline} strokeWidth={geometry.strokeThin} strokeDasharray="8 8" />
               {f.label && <Text x={x + 12} y={y + 20} text={f.label} size={type.caption} color={palette.muted} />}
             </g>
           );
         }
+        const z = p < 1 ? pop(p) : 1;
+        const cxr = x + w / 2;
+        const cyr = y + h / 2;
         return (
-          <g key={i}>
+          <g key={i} opacity={Math.min(1, p * 2)} transform={p < 1 ? `translate(${cxr} ${cyr}) scale(${z}) translate(${-cxr} ${-cyr})` : undefined}>
             <rect
               x={x}
               y={y}
