@@ -88,7 +88,6 @@ One way through this seemingly impossible challenge, is to start with a rough an
 
 **Beats.**
 
-- Open on the four floor maps, drawn in one after the other, four-up. They stay on screen for the whole chapter so the speech can point at them.
 - What usually happens: teams just try things, and when it keeps going wrong they tell the model to do it right. Framed as the natural first move that we made too, with the lab's own "do it right" prompt as the example. The problem is not the instinct, it is what you learn from it: anecdotes, not requirements.
 - Why "do it right" cannot work here: the model has no way to know what a mistake is in this room, because nobody has written down what the job is. That knowledge is what the platform has to provide.
 - The inversion stated plainly. Ask what goes wrong, not what features are needed. Features are endless and job-specific; failures are finite and show up in every job.
@@ -175,33 +174,32 @@ But they are concrete enough to argue with. Let's start with the museum.
 **Beats.**
 
 - On location. In front of a museum if permission works out, otherwise anywhere outdoors, in nature or near a landmark. The setting is a backdrop, not a prop. Set up the job: a one-hour tour, a group of strangers, a schedule.
+
 - The prompt, briefly, as a screen recording of a clean Claude session. Do not explain it yet.
+
+- Camera. The funny thing is that Claude will give you a slightly different answer each time you try this prompt. In order to get the most out of the session, I gave the prompt to four different sessions, and later combined the results into one.
+
 - Walk the output concern by concern. Each concern gets a ten-second scene and a card that lands on the board. Each scene adds the layer the robot would need: the first perception concern introduces the belief ghosts, the first conversation concern introduces the heard bubble, the first tour concern introduces the budget bar.
-- The three lists below come from the first run in INIT.md and are placeholders. The real cards come from a fresh, recorded run of the same prompt, and the scene selection is made from that output.
-- Perceiving the group: group membership, identity from behind, non-cooperative enrollment, name binding, map frame.
-- Talking with the group: addressee detection, per-person conversation state, overlapping speech, floor control, per-person language.
-- Running the tour: executive owns the schedule, moving on as a social act, promise tracking, content grounding, context budget, degradation and handoff, privacy, cannot iterate live.
+
+- Items from the breakdown.
+
 - End with the cards in three loose piles.
 
-**On screen.** Camera on location. Screen recording of the clean Claude session, raw output, nothing cleaned up. Twelve to eighteen Scene traces. Board composition building the three piles. Candidates to become cards only if the chapter runs long: map frame, per-person language, privacy.
+**Verbal Camera Script.**
+
+[introduction to first prompt]
+
+--> show Claude terminal with output
+
+[make that four with a combiner prompt]
+
+[back indoors at neutral location]
+
+--> various cards get created with ten-second scenes and explanations
 
 **Gap.** Identity drift under non-cooperative enrollment is unmeasured in Thalamus today.
 
-## 5 · The method revealed — 3:00
-
-**Purpose.** Now that the output is visible, dissect the prompt so the viewer can judge and copy it.
-
-**Beats.**
-
-- Anatomy of the prompt: what the platform already does, a concrete scenario, two or three seed examples to set granularity, an explicit ask to ground answers in the current system.
-- It is a conversation, not one prompt. The follow-ups were the cross-domain comparison, the deterministic versus LLM split, and the simulator needs.
-- Caveat. The output is a hypothesis list. Human judgment prioritizes it. Simulation and lab evidence validate it.
-
-**On screen.** Text composition scrolling the prompt from the recorded session, verbatim, with timed highlights per part. Short camera interlude for the caveat.
-
-**Gap.** The prompt was written by someone who already knew the codebase. A newcomer's prompt would yield shallower concerns.
-
-## 6 · Generalization test — 6:30
+## 5 · Generalization test — 6:30
 
 **Purpose.** The intellectual payoff: the same analysis on three more domains, shown as a diff against a board the viewer already knows.
 
@@ -212,6 +210,8 @@ But they are concrete enough to argue with. Let's start with the museum.
 - The stage adds its own: far-field speech in a crowd, spatial reference as identity (third row, red sweater), question-time floor control at scale with the host as arbiter, staying inside the talk's scope, interruption and heckling, the talk flow owned by the executive with questions as a sub-state, silence after "any questions". It reinforces addressee detection, overlapping speech, time budget, content grounding, handoff to the host, staff override, proactive initiation and confidence gates.
 - Some cards gain a parameter annotation. Identity retention: one hour, days to years, months to years, one question.
 - The classification: four dots means platform core, same card with different values means a configuration parameter, one dot means a domain plugin. Two or three dots is where the judgment calls live, and a sentence each is enough.
+
+**Verbal Camera Script.**
 
 **On screen.** Two board states animating one into the next. Four to six short Scene traces on the hospitality, care and stage floorplans for the new cards, with Wendy and Janet as staff and host.
 
@@ -274,7 +274,7 @@ But they are concrete enough to argue with. Let's start with the museum.
 | Floorplan reveal, four-up                                                    | 1        | Scene or its own composition |
 | Concern cards                                                                | 22 to 25 | Card                         |
 | Board states                                                                 | 6        | Board                        |
-| Axis table                                                                   | 1        | AxisTable                    |
+| Axis table: empty frame, 7 axis questions writing in, 7 rows filling         | 15       | AxisTable                    |
 | Ladder                                                                       | 1        | Ladder                       |
 | Prompt with highlights                                                       | 1        | Text                         |
 | Webui trace recording                                                        | 1        | screen capture               |

@@ -6,6 +6,7 @@ import { Scene, sceneDuration } from "./compositions/Scene";
 import { Strip, stripDuration } from "./compositions/Strip";
 import { Buildup, PER_PLAN_SECONDS } from "./compositions/Buildup";
 import { BuildupPan, buildupPanAllSeconds, buildupPanSeconds } from "./compositions/BuildupPan";
+import { AxisTable, AXIS_ROW_COUNT, AXIS_ANIMATION_FRAMES, FILL_ANIMATION_FRAMES, FRAME_ANIMATION_FRAMES } from "./compositions/AxisTable";
 import { loadFloorplan, loadTrace, type Trace } from "./trace/schema";
 import museumRaw from "../../floorplans/museum.json";
 import hospitalityRaw from "../../floorplans/hospitality.json";
@@ -150,5 +151,39 @@ export const RemotionRoot: React.FC = () => (
         />
       )),
     )}
+    {/* Chapter 3 axis table: the empty frame, then one axis question per shot, then one filled row per shot. */}
+    <Composition
+      id="axis-table-frame"
+      component={AxisTable}
+      durationInFrames={FRAME_ANIMATION_FRAMES}
+      fps={canvas.fps}
+      width={canvas.width}
+      height={canvas.height}
+      defaultProps={{ axes: 0, cells: 0, buildFrame: true }}
+    />
+    {Array.from({ length: AXIS_ROW_COUNT }, (_, i) => (
+      <Composition
+        key={`axis-table-axis-${i + 1}`}
+        id={`axis-table-axis-${i + 1}`}
+        component={AxisTable}
+        durationInFrames={AXIS_ANIMATION_FRAMES}
+        fps={canvas.fps}
+        width={canvas.width}
+        height={canvas.height}
+        defaultProps={{ axes: i + 1, cells: 0 }}
+      />
+    ))}
+    {Array.from({ length: AXIS_ROW_COUNT }, (_, i) => (
+      <Composition
+        key={`axis-table-fill-${i + 1}`}
+        id={`axis-table-fill-${i + 1}`}
+        component={AxisTable}
+        durationInFrames={FILL_ANIMATION_FRAMES}
+        fps={canvas.fps}
+        width={canvas.width}
+        height={canvas.height}
+        defaultProps={{ axes: AXIS_ROW_COUNT, cells: i + 1 }}
+      />
+    ))}
   </>
 );
